@@ -1,0 +1,55 @@
+.model_bck{
+  position: fixed;
+  display: block; 
+  overflow: auto; 
+  width: 100%; 
+  height: 100%; 
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: 999; 
+  cursor: pointer;
+}
+
+.modal_container{
+    margin: 10% auto;
+    background-color: white;
+    border-radius: 0.25rem;
+    max-width: 320px;
+}
+
+.modal_header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:10px;
+    border-bottom: 1px solid lightgray;
+    height:75px;
+}
+
+.modal_header>img,span{
+    padding:20px;
+}
+
+form{
+    padding: 0rem 2rem 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+input, button{
+    margin-bottom:10px;
+    padding:10px;
+}
+
+.closeBtn{
+    padding:20px;
+    color:red;
+    font-size:25px;
+}
+
+.closeBtn:hover{
+    background: #a09c9c;
+}
