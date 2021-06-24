@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Modal.css';
+import Modal from './Modal';
 import {auth} from '../firebase';
 
 function Signup(props) {
@@ -14,6 +15,10 @@ function Signup(props) {
     const handleSignUp = (e)=>{
         e.preventDefault();
         setError('');
+        if(!username || !email || !password){
+            setError("Neither username, email or password can't be empty");
+            return;
+        }
        auth.createUserWithEmailAndPassword(email, password)
        .then((authUser)=>{
            console.log(authUser)
@@ -27,42 +32,31 @@ function Signup(props) {
     }
 
     return (
-        <div className="model_bck">
-            <div className="modal_container">
-                <div className="modal_header">
-                    <img
-                        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-                        alt=""
-                    />
-                    <span className="closeBtn" onClick={closeModal}>x</span>
-                </div>
-                <form>
-                    <div className="form_header">
-                        SignUp
-                    </div>
-                    <input 
-                        type="text"
-                        value={username}
-                        onChange={(e)=>setUsername(e.target.value)}
-                        placeholder="Username"    
-                    />
-                    <input 
-                        type="text"
-                        value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
-                        placeholder="Email"    
-                    />
-                    <input 
-                        type="password"
-                        value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
-                        placeholder="Password"    
-                    />
-                    { errmsg ? <div className="err">{errmsg}</div>:""}
-                    <button onClick={(e)=>handleSignUp(e)}>Signup</button>
-                </form>
+        <Modal closeModal = {closeModal}>
+            <div className="form_header">
+                SignUp
             </div>
-        </div>
+            <input 
+                type="text"
+                value={username}
+                onChange={(e)=>setUsername(e.target.value)}
+                placeholder="Username"    
+            />
+            <input 
+                type="text"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="Email"    
+            />
+            <input 
+                type="password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                placeholder="Password"    
+            />
+            <button onClick={(e)=>handleSignUp(e)}>Signup</button>
+            { errmsg ? <div className="err">{errmsg}</div>:""}
+        </Modal>
     )
 }
 

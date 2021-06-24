@@ -22,6 +22,8 @@ a{
 button{
   outline: none;
   border:none;
+  padding:5px 10px;
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
   background: rgb(0, 110, 255,0.25);;
@@ -29,6 +31,12 @@ button{
 
 .app_nav> button{
   margin-right:10px;
+}
+
+.app_nav>  .quotes{
+  font-size: 10px;
+  color: #1b3eca;
+  cursor: pointer;
 }
 
 button:hover{
@@ -89,12 +97,21 @@ button:hover{
   border-bottom: 1px solid lightgray;
 }
 
+.success{
+  color: green;
+  font-size:10px;
+  padding:10px 20px;
+  background: #70eb6033;
+  margin-top:5px;
+  border-radius: 5px;
+}
+
 .err{
   color: red;
-  font-size:15px;
+  font-size:10px;
   padding:10px 20px;
   background: #d33e3e33;
-  margin:10px;
+  margin-top:2px;
   border-radius: 5px;
 }
 

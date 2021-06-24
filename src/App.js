@@ -3,6 +3,7 @@ import './App.css';
 import Post from './Components/Post';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import ResetPassword from './Components/ResetPassword';
 
 import {auth, db} from './firebase';
 import PostUpload from './Components/PostUpload';
@@ -13,6 +14,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [showSignUp, showSignupModel] = useState(false);
   const [showLogin, showLoginModel] = useState(false);
+  const [showForgot, showForgotPasswordModel] = useState(false);
   const [user, setCurrentUser] = useState('');
 
   const logOut = () =>{
@@ -50,7 +52,8 @@ function App() {
         </div> :
         <div className="app_nav">
           <button onClick={()=>showLoginModel(true)}>Login</button>
-          <button onClick={()=>showSignupModel(true)}>Signup</button>
+          <button onClick={()=>showSignupModel(true)}>Signup</button><br/>
+          <span className="quotes" onClick={()=>showForgotPasswordModel(true)}>Forgot Password? </span>
         </div>
        }
       </div>
@@ -61,6 +64,10 @@ function App() {
       {
         showLogin &&
         <Login closeModal={() => showLoginModel(false)}/>
+      }
+      {
+        showForgot &&
+        <ResetPassword closeModal={() => showForgotPasswordModel(false)}/>
       }
 
       {
